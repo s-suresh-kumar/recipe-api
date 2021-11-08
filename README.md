@@ -1,4 +1,4 @@
-# Recipe API + UI
+# Recipe API
 
 As a world famous chef turned programmer, you want to create an API where people can create and view their favorite recipes.
 
