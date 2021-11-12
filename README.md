@@ -14,6 +14,7 @@ The API should support the following operations:
 4. Get a single recipe and its ingredients
 5. Update an existing recipe and its ingredients
 6. Delete a recipe
+7. Delete an ingredient
 
 A recipe should include the following data points
 
