@@ -35,7 +35,7 @@ The API should return data in JSON format
 - The API does not need to persist the recipes between restarts, but it should
   persist the recipes as long as it is running i.e. use an in-memory data store
   as opposed to a MySQL or PGSQL database. Use something besides an object
-  array or list.
+  array or list, if possible.
 - Please provide instructions to run the API
 - Please provide example requests
 - Unit tests are welcome, but not required for assessment
