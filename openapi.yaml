@@ -1,0 +1,407 @@
+openapi: 3.0.3
+info:
+  title: Api Documentation
+  description: Api Documentation
+  termsOfService: urn:tos
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  version: '1.0'
+servers:
+  - url: http://localhost:8080
+    description: Inferred Url
+tags:
+  - name: ingredient-controller
+    description: Ingredient Controller
+  - name: prepopulate-controller
+    description: Prepopulate Controller
+  - name: recipe-controller
+    description: Recipe Controller
+paths:
+  /ingredients:
+    put:
+      tags:
+        - ingredient-controller
+      summary: updateIngredient
+      operationId: updateIngredientUsingPUT
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ingredient'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - ingredient-controller
+      summary: createIngredient
+      operationId: createIngredientUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ingredient'
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /ingredients/id/{id}/recipeId/{recipeId}:
+    post:
+      tags:
+        - ingredient-controller
+      summary: addIngredientToRecipe
+      operationId: addIngredientToRecipeUsingPOST
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+        - name: recipeId
+          in: path
+          description: recipeId
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /ingredients/recipe/{id}:
+    get:
+      tags:
+        - ingredient-controller
+      summary: getIngredientsByRecipe
+      operationId: getIngredientsByRecipeUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ingredient'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /ingredients/{id}:
+    get:
+      tags:
+        - ingredient-controller
+      summary: getIngredient
+      operationId: getIngredientUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - ingredient-controller
+      summary: deleteIngredient
+      operationId: deleteIngredientUsingDELETE
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /clear-all-data:
+    get:
+      tags:
+        - prepopulate-controller
+      summary: clearAllData
+      operationId: clearAllDataUsingGET
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /seed-initial-data:
+    get:
+      tags:
+        - prepopulate-controller
+      summary: seedData
+      operationId: seedDataUsingGET
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /recipes:
+    get:
+      tags:
+        - recipe-controller
+      summary: getAllRecipes
+      operationId: getAllRecipesUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - recipe-controller
+      summary: updateRecipe
+      operationId: updateRecipeUsingPUT
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - recipe-controller
+      summary: createRecipe
+      operationId: createRecipeUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /recipes/category/{category}:
+    get:
+      tags:
+        - recipe-controller
+      summary: getRecipesByCategory
+      operationId: getRecipesByCategoryUsingGET
+      parameters:
+        - name: category
+          in: path
+          description: category
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /recipes/{id}:
+    get:
+      tags:
+        - recipe-controller
+      summary: getRecipe
+      operationId: getRecipeUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - recipe-controller
+      summary: deleteRecipe
+      operationId: deleteRecipeUsingDELETE
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  schemas:
+    Ingredient:
+      title: Ingredient
+      type: object
+      properties:
+        amount:
+          type: string
+        description:
+          type: string
+        ingredientId:
+          type: integer
+          format: int32
+        name:
+          type: string
+        recipeId:
+          type: integer
+          format: int32
+    Recipe:
+      title: Recipe
+      type: object
+      properties:
+        category:
+          type: string
+        cookTime:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        directions:
+          type: string
+        ingredients:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Ingredient'
+        prepTime:
+          type: string
+        recipeId:
+          type: integer
+          format: int32
+        servings:
+          type: integer
+          format: int32
+        title:
+          type: string
+        updatedDate:
+          type: string
+          format: date-time
