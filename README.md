@@ -59,3 +59,5 @@ The API should return data in JSON format
   - Would have loved to add proper customer error/exception handling. Did not add because of lack of time.
   Given more time I would definitely work on them
   - Explore the possibility of adding user authorization/authentication etc., - may for a future time.
+  - Would love to deploy it in Heroku /Netlify/AWS Beanstalk free PaaS sites, so that API can be tested right from editor.swagger.io. Whenever I get time, I will attempt this.
+  - Would attempt the front end for this API , most likely in react, when time permits.
