@@ -39,3 +39,23 @@ The API should return data in JSON format
 - Please provide instructions to run the API
 - Please provide example requests
 - Unit tests are welcome, but not required for assessment
+
+
+### Implementation
+
+  - The API is implemented n JAVA using Spring Boot Frame work. 
+
+### How-To-Run
+
+  - The easiest way to run this API, is to clone the code to your local machine, open the pom.xml using intelliJ IDE and run the application. The API uses localhost & port 8080. You may also want to modify the mysql password in application.properties file. If need be you can change the port other than 8080. The swagger documentation is provided here in openapi.yaml in yaml format and openapi.md in markdown format. There are end points to seed and clear the data. Otherwise the implementation of the app just captures the MVP outlined in the above requirements.
+
+### Example Requests
+
+  - Can be inferred from the swagger documentation openapi.yaml / openapi.md
+
+### Future Extension
+
+  - Would have loved to add some unit tests, MockMVC / Mockito test. Because of lack of time I did not.
+  - Would have loved to add proper customer error/exception handling. Did not add because of lack of time.
+  Given more time I would definitely work on them
+  - Explore the possibility of adding user authorization/authentication etc., - may for a future time.
